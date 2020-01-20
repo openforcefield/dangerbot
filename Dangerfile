@@ -6,3 +6,5 @@ reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dan
 message(reviewers.inspect)
 
 message(reviewers.sample)
+puts(github.pr_json)
+
