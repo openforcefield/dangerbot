@@ -1,6 +1,8 @@
-message("Hello, this worked")
+require 'open-uri'
 require 'yaml'
-reviewers = YAML.load_file('reviewers.yml')
-puts reviewers.inspect
+
+message("Hello, this worked")
+reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml').read)
+message(reviewers.inspect)
 
 message(reviewers.sample)
