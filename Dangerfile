@@ -4,7 +4,7 @@ require 'yaml'
 
 
 # The following is taken from GitLab's reviewer roulette:
-https://gitlab.com/gitlab-org/gitlab-foss/blob/master/danger/roulette/Dangerfile
+# https://gitlab.com/gitlab-org/gitlab-foss/blob/master/danger/roulette/Dangerfile
 # There is a MUCH more sophisticated system there, which we might begin
 # adopting more of if the need arises.
 
