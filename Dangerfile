@@ -20,7 +20,7 @@ To spread load more evenly across eligible reviewers, Danger has randomly picked
 a candidate for this review. Feel free to override this selection if you
 think someone else would be better-suited, or the chosen person is unavailable.
 This bot will not run if the string "#trivial" appears in the PR name or body
-text, or if a reviewer is already assigned.
+text, the string "[WIP]" appears in the PR title, or if a reviewer is already assigned.
 
 Once you've decided who will review this merge request, mention them as you
 normally would! Danger does not (yet?) automatically notify them for you.
