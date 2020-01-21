@@ -2,13 +2,11 @@
 
 Dangerbot is the host of Open Force Field Reviewer Roulette. This was inspired by [GitLab's reviewer roulette system](https://about.gitlab.com/blog/2019/10/23/reviewer-roulette-one-year-on/)
 
-The code that powers this bot is a pared-down version of [GitLab's roulette Dangerfile](https://gitlab.com/gitlab-org/gitlab-foss/blob/master/danger/roulette/Dangerfile). 
 
-The account that runs this bot is https://github.com/openff-dangerbot. Per their [recommended setup instructions](https://danger.systems/guides/getting_started.html#tokens-for-oss-projects), Travis CI has that bot's API token stored as a NON-SECRET value, so that Travis can still use it in CI for forks. As such, I think someone could hijack it, so **do not give this account write access to anything** (it's still allowed to comment). 
+### Getting off-dangerbot to run in your repo 
+To add this Dangerbot to your repo, 
 
-The setup instructions for Danger are [here](https://danger.systems/guides/getting_started.html#setting-up-danger-to-run-on-your-ci). We use the Ruby version. 
-
-To add this Dangerbot to your repo, add the following to your `.travis.yml`:
+1) Add the following to your `.travis.yml`:
 
 * In the `matrix` section, add 
 ```
@@ -26,8 +24,18 @@ To add this Dangerbot to your repo, add the following to your `.travis.yml`:
     exit ;  fi;
 ```
 
-Finally, add a new file to the top of your repo, called `Dangerfile`, containing:
+2) Add a new file to the top of your repo, called `Dangerfile`, containing:
 ```
 # Run the shared Dangerfile with these settings
 danger.import_dangerfile(github: "openforcefield/dangerbot") 
 ```
+
+3) Finally, you will need to add `openff-dangerbot`'s limited API token to your travis environment. Mine is at https://travis-ci.org/openforcefield/openforcefield/settings, under the name `DANGER_GITHUB_API_TOKEN`. Contact Jeff once you get to this point to get Dangerbot's API token for Travis.
+
+### Bot account
+
+The account that runs this bot is https://github.com/openff-dangerbot. Contact Jeff once you get to this point to get Dangerbot's API token for Travis. Contact Jeff or Karmen if you need the login info for the `openff-dangerbot` account.
+
+### Setup details
+
+We use the Ruby version of Danger. In case we need to change anything, [here are original setup instructions for Danger](https://danger.systems/guides/getting_started.html#setting-up-danger-to-run-on-your-ci), [here are some example Dangerfiles](https://danger.systems/reference.html), and [here's a helpful example JSON of a GitHub PR](https://raw.githubusercontent.com/danger/danger/master/spec/fixtures/github_api/pr_response.json). You can check out [Gitlab's roulette Dangerfile](https://gitlab.com/gitlab-org/gitlab-foss/blob/master/danger/roulette/Dangerfile). ) to see everything that's possible with Danger.
