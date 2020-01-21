@@ -34,24 +34,9 @@ unless (github.pr_title + github.pr_body).include?("#trivial")?
   reviewer = reviewers.sample
   message(reviewers.inspect)
 
-  # Strip leading and trailing CE/EE markers
-  canonical_branch_name =
-    roulette.canonical_branch_name(github.pr_json['source_branch'])
-
-  team =
-    begin
-      roulette.project_team(helper.project_name)
-    rescue => err
-      warn("Reviewer roulette failed to load team data: #{err.message}")
-      []
-    end
-
-  project = helper.project_name
-  unknown = changes.fetch(:unknown, [])
-
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER)
-  markdown("|"+reviewer+"|") 
+  markdown("|"+reviewers.sample+"|") 
   markdown("This reviewer was selected out of a list of volunteer Open Force Field developers: "+ reviewers.inspect)
 end
 
@@ -60,6 +45,6 @@ end
 
 
 
-message(reviewers.sample)
-puts(github.pr_json["assignee"])
+# message(reviewers.sample)
+# puts(github.pr_json["assignee"])
 
