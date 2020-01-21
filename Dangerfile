@@ -29,11 +29,8 @@ normally would! Danger does not (yet?) automatically notify them for you.
 |----------|
 MARKDOWN
 
-unless (github.pr_title + github.pr_body).include?("#trivial")?
+unless (github.pr_title + github.pr_body).include?("#trivial")
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
-  # reviewer = reviewers.sample
-  # message(reviewers.inspect)
-
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER)
   markdown("|"+reviewers.sample+"|")
@@ -43,8 +40,8 @@ end
 
 
 
-
-
+  # reviewer = reviewers.sample
+  # message(reviewers.inspect)
 
 # message(reviewers.sample)
 # puts(github.pr_json["assignee"])
