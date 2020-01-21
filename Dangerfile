@@ -37,7 +37,7 @@ if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title
 end
 message(github.pr_json["assignee"])
 
-message(github.pr_json.to_yaml)
+message(github.pr_json.to_json)
 
 #data = github.pr_json
 #data.sort{|a,b| a[1]<=>b[1]}.each { |elem|
