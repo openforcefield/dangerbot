@@ -19,6 +19,8 @@ CATEGORY_TABLE_HEADER = <<MARKDOWN
 To spread load more evenly across eligible reviewers, Danger has randomly picked
 a candidate for this review. Feel free to override this selection if you
 think someone else would be better-suited, or the chosen person is unavailable.
+This bot will not run if the string "#trivial" appears in the PR name or body
+text, or if a reviewer is already assigned.
 
 Once you've decided who will review this merge request, mention them as you
 normally would! Danger does not (yet?) automatically notify them for you.
@@ -27,7 +29,7 @@ normally would! Danger does not (yet?) automatically notify them for you.
 |----------|
 MARKDOWN
 
-unless (github.pr_title + github.pr_body).include?("#trivial")
+if !(github.pr_title + github.pr_body).include?("#trivial") and !(github.assignee == null)
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
