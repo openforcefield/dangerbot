@@ -29,7 +29,7 @@ normally would! Danger does not (yet?) automatically notify them for you.
 |----------|
 MARKDOWN
 
-if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title.include?("[WIP]") and (github.pr_json["assignee"] == nil) 
+if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title.include?("[WIP]") and (github.pr_json["requested_reviewers"] == nil) 
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
@@ -38,9 +38,10 @@ end
 message(github.pr_json["assignee"])
 
 require "pp"
-pp github.pr_json
-
+pp github.api.PullRequests.pull_request_comments("openforcefield/openforcefield", 490)
 #message(github.pr_json.to_json)
+puts "\n\n\n\n\n"
+pp github.pr_json
 
 #data = github.pr_json
 #data.sort{|a,b| a[1]<=>b[1]}.each { |elem|
