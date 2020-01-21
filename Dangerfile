@@ -11,9 +11,7 @@ require 'yaml'
 MESSAGE = <<MARKDOWN
 ## Reviewer roulette
 
-Changes that require review have been detected! A merge request is normally
-reviewed by both a reviewer and a maintainer in its primary category (e.g.
-~frontend or ~backend), and by a maintainer in all other categories.
+Changes that require review have been detected!
 MARKDOWN
 
 CATEGORY_TABLE_HEADER = <<MARKDOWN
@@ -32,10 +30,8 @@ MARKDOWN
 unless (github.pr_title + github.pr_body).include?("#trivial")
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
-  markdown(CATEGORY_TABLE_HEADER)
-  markdown("|"+reviewers.sample+"|")
-  markdown("| @j-wags |") 
-  markdown("This reviewer was selected out of a list of volunteer Open Force Field developers: "+ reviewers.inspect)
+  markdown(CATEGORY_TABLE_HEADER+"\n| @j-wags |") )
+  markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
 end
 
 
