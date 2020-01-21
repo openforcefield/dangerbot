@@ -29,7 +29,7 @@ normally would! Danger does not (yet?) automatically notify them for you.
 |----------|
 MARKDOWN
 
-if !(github.pr_title + github.pr_body).include?("#trivial") and !(github.assignee == null)
+if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title.include?("[WIP]") and !(github.assignee == null) 
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
