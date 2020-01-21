@@ -38,7 +38,7 @@ end
 message(github.pr_json["assignee"])
 
 require "pp"
-pp github.api.PullRequests.pull_request_comments("openforcefield/openforcefield", 490)
+pp github.api.pull_requests.pull_request_comments("openforcefield/openforcefield", 490)
 #message(github.pr_json.to_json)
 puts "\n\n\n\n\n"
 pp github.pr_json
