@@ -9,7 +9,9 @@ The account that runs this bot is https://github.com/openff-dangerbot. Per their
 The setup instructions for Danger are [here](https://danger.systems/guides/getting_started.html#setting-up-danger-to-run-on-your-ci). We use the Ruby version. 
 
 ### Installation 
-To add this Dangerbot to your repo, add the following to your `.travis.yml`:
+To add this Dangerbot to your repo, 
+
+1) Add the following to your `.travis.yml`:
 
 * In the `matrix` section, add 
 ```
@@ -27,10 +29,10 @@ To add this Dangerbot to your repo, add the following to your `.travis.yml`:
     exit ;  fi;
 ```
 
-Add a new file to the top of your repo, called `Dangerfile`, containing:
+2) Add a new file to the top of your repo, called `Dangerfile`, containing:
 ```
 # Run the shared Dangerfile with these settings
 danger.import_dangerfile(github: "openforcefield/dangerbot") 
 ```
 
-Add `openforcefield-dangerbot`'s limited API token to your travis environment. Mine is https://travis-ci.org/openforcefield/openforcefield/settings. Add the token by creating a new environment variable, `DANGER_GITHUB_API_TOKEN` which equals `caa3a4a51664dd050a016b7a215f183f2b7ef60a`, and enable `DISPLAY VALUE IN BUILD LOG`
+3) Finally, add `openforcefield-dangerbot`'s limited API token to your travis environment. Mine is https://travis-ci.org/openforcefield/openforcefield/settings. Add the token by creating a new environment variable, `DANGER_GITHUB_API_TOKEN` which equals `caa3a4a51664dd050a016b7a215f183f2b7ef60a`, and enable `DISPLAY VALUE IN BUILD LOG`
