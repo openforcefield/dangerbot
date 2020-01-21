@@ -32,6 +32,11 @@ danger.import_dangerfile(github: "openforcefield/dangerbot")
 
 3) Finally, you will need to add `openff-dangerbot`'s limited API token to your travis environment. Mine is at https://travis-ci.org/openforcefield/openforcefield/settings, under the name `DANGER_GITHUB_API_TOKEN`. Contact Jeff once you get to this point to get Dangerbot's API token for Travis.
 
+### Using openff-dangerbot
+
+* `openff-dangerbot` will ignore PRs that contain the string `[WIP]` in the title or the string `#trivial` in the PR name or body text.
+* `openff-dangerbot` will ignore PRs that already have a reviewer assigned.
+
 ### Bot account
 
 The account that runs this bot is https://github.com/openff-dangerbot. Contact Jeff once you get to this point to get Dangerbot's API token for Travis. Contact Jeff or Karmen if you need the login info for the `openff-dangerbot` account.
