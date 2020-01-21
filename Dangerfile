@@ -30,7 +30,7 @@ MARKDOWN
 unless (github.pr_title + github.pr_body).include?("#trivial")
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
-  markdown(CATEGORY_TABLE_HEADER+"\n| @j-wags |") )
+  markdown(CATEGORY_TABLE_HEADER+"\n| @j-wags |")
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
 end
 
