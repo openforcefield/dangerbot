@@ -1,4 +1,4 @@
-# dangerbot
+# OpenFF's dangerbot
 
 Dangerbot is the host of Open Force Field Reviewer Roulette. This was inspired by [GitLab's reviewer roulette system](https://about.gitlab.com/blog/2019/10/23/reviewer-roulette-one-year-on/)
 
