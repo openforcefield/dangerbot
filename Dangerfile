@@ -35,7 +35,12 @@ if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
 end
+message(github.pr_json["assignee"])
 
+data = github.pr_json
+data.sort{|a,b| a[1]<=>b[1]}.each { |elem|
+  message("#{elem[1]}, #{elem[0]}")
+}
 
 
   # reviewer = reviewers.sample
