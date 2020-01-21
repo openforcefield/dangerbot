@@ -37,10 +37,12 @@ if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title
 end
 message(github.pr_json["assignee"])
 
-data = github.pr_json
-data.sort{|a,b| a[1]<=>b[1]}.each { |elem|
-  message("#{elem[1]}, #{elem[0]}")
-}
+message(github.pr_json.to_yaml)
+
+#data = github.pr_json
+#data.sort{|a,b| a[1]<=>b[1]}.each { |elem|
+#  message("#{elem[1]}, #{elem[0]}")
+#}
 
 
   # reviewer = reviewers.sample
