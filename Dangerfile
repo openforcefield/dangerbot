@@ -34,7 +34,7 @@ unless (github.pr_title + github.pr_body).include?("#trivial")
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER)
   markdown("|"+reviewers.sample+"|")
-  markdown("|"+@j-wags+"|") 
+  markdown("| @j-wags |") 
   markdown("This reviewer was selected out of a list of volunteer Open Force Field developers: "+ reviewers.inspect)
 end
 
