@@ -1,8 +1,8 @@
 name: off-dangerbot
 
 on:
-  pull_request_review_comment:
-    types: created
+  pull_request:
+    types: review_requested
 
 jobs:
   build:
