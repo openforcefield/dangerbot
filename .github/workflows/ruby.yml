@@ -16,5 +16,4 @@ jobs:
       with:
         ruby-version: 2.6.x
     - name: Assign reviewer if prompted
-      uses: danger/danger
-      
+      uses: danger/ruby
