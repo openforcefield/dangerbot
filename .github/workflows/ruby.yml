@@ -1,7 +1,7 @@
 name: off-dangerbot
 
 on:
-  issue_comment:
+  pull_request_review_comment:
     types: created
 
 jobs:
