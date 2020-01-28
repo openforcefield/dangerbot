@@ -78,7 +78,7 @@ if dangerbot_assigned
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
-  client.update_issue(repo, number, {assignee: "j-wags"})
+  client.update_issue(repo, number, :assignee => "j-wags") # {assignee: "j-wags"})
 end
 
 
