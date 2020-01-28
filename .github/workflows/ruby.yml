@@ -1,8 +1,8 @@
 name: off-dangerbot
 
 on:
-  issue_comment:
-    types: created
+  pull_request:
+    types: review_requested
 
 jobs:
   build:
@@ -16,5 +16,7 @@ jobs:
       with:
         ruby-version: 2.6.x
     - name: Assign reviewer if prompted
-      uses: danger/danger
-      
+      run: |
+        gem install danger --version '~> 5.0'
+        danger --version 
+        danger
