@@ -34,8 +34,8 @@ pp github
 
 client = github.api
 
-repo = github[":repo"][":full_name"]
-number = github[":number"]
+repo = github.full_name # [":repo"][":full_name"]
+number = github.number # [":number"]
 
 pr = client.pull_request(repo, number)
 comments = client.issue_comments(repo, number)
