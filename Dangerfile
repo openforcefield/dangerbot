@@ -167,13 +167,10 @@ dangerbot_assigned = false
 #  end
 #end
 
-pp pr["assignees"]
-for assignee in pr["assignees"]
-  #puts "|"+assignee["login"]|
-  pp assignee[":login"]
-  if assignee[":login"] == "openff-dangerbot"
-    #if assignee[":login"].include?("off-dangerbot")
-    #puts "aaaa"
+pp pr["requested_reviewers"]
+for reviewer in pr["requested_reviewers"]
+  pp reviewer[":login"]
+  if reviewer[":login"] == "openff-dangerbot"
     dangerbot_assigned = true
   end
 end
