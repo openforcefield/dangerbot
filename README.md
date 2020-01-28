@@ -6,40 +6,54 @@ Dangerbot is the host of Open Force Field Reviewer Roulette. This was inspired b
 ### Getting off-dangerbot to run in your repo 
 To add this Dangerbot to your repo, 
 
-1) Add the following to your `.travis.yml`:
+1) Create the GitHub Action for Dangerbot by creating a file at `.github/workflows/ruby.yml` in your project repo. 
+  It should contain 
 
-* In the `matrix` section, add 
 ```
-  - os: linux
-    language: ruby
-    env: DANGERBOT=true
-```
-* In the `before_install`, add
-```
-# If this is just a "Dangerbot" PR-checking build, install+run the bot, then exit
-- if [ "$DANGERBOT" == true ]; then 
-    gem install danger --version '~> 5.0' && 
-    danger --version && 
-    danger && 
-    exit ;  fi;
+name: off-dangerbot
+
+on:
+  pull_request:
+      types: assigned
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Assign reviewer if prompted
+      # API token for off-dangerbot
+      env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+      run: |
+        gem install danger --version '~> 5.0'
+        danger --version 
+        danger
 ```
 
-2) Add a new file to the top of your repo, called `Dangerfile`, containing:
+2) Add a new file to the top of your repo called `Dangerfile`, containing:
 ```
 # Run the shared Dangerfile with these settings
 danger.import_dangerfile(github: "openforcefield/dangerbot") 
 ```
 
-3) Finally, you will need to add `openff-dangerbot`'s limited API token to your travis environment. Mine is at https://travis-ci.org/openforcefield/openforcefield/settings, under the name `DANGER_GITHUB_API_TOKEN`. Contact Jeff once you get to this point to get Dangerbot's API token for Travis.
+3) Finally, you will need to add `openff-dangerbot`'s limited API token to your GitHub Secrets. Mine is at https://github.com/openforcefield/dangerbot/settings/secrets, and it must have the name `DANGER_GITHUB_API_TOKEN`. Contact Jeff once you get to this point and he will send you Dangerbot's API token.
+
+4) Give Dangerbot "Triage" access to your repo if you'd like it to automatically assign the reviewer when it runs (otherwise it will just tag them in a comment). The place where I do that is https://github.com/openforcefield/dangerbot/settings/access. If the repo you're setting up is inside the `openforcefield` org, you should be able to just give the "Bots" team "Triage" permissions.
 
 ### Using openff-dangerbot
 
-* `openff-dangerbot` will ignore PRs that contain the string `[WIP]` in the title or the string `#trivial` in the PR name or body text.
-* `openff-dangerbot` will ignore PRs that already have a reviewer assigned.
+Once the above is complete and the changes are merged into your repo's `master` branch, you can trigger Dangerbot by selecting them in the "Assignees" section on the top right of your PR. 
 
 ### Bot account
 
-The account that runs this bot is https://github.com/openff-dangerbot. Contact Jeff once you get to this point to get Dangerbot's API token for Travis. Contact Jeff or Karmen if you need the login info for the `openff-dangerbot` account.
+The account that runs this bot is https://github.com/openff-dangerbot. Contact Jeff if you need the login info for the `openff-dangerbot` account.
 
 ### Setup details
 
