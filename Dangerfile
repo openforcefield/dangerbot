@@ -182,12 +182,12 @@ dangerbot_assigned = false
 #  end
 #end
 pp pr["assignees"]
-#for assignee in pr["assignees"]
-#  pp assignee[":login"]
-#  if assignee[":login"] == "openff-dangerbot"
-#    dangerbot_assigned = true
-#  end
-#end
+for assignee in pr["assignees"]
+  pp assignee[":login"]
+  if assignee[":login"] == "openff-dangerbot"
+    dangerbot_assigned = true
+  end
+end
 
 
 puts "dangerbot assigned?  " + dangerbot_assigned.to_s
