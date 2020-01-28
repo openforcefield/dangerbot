@@ -32,8 +32,13 @@ MARKDOWN
 
 pp github
 
-pr = client.pull_request(github[":repo"][":full_name"], github[":number"])
-comments = client.issue_comments(github[":repo"][":full_name"], github["number"])
+client = github.api
+
+repo = github[":repo"][":full_name"]
+number = github[":number"]
+
+pr = client.pull_request(repo, number)
+comments = client.issue_comments(repo, number)
 
 
 dangerbot_assigned = false
@@ -61,11 +66,13 @@ puts "dangerbot already posted? " + dangerbot_already_posted.to_s
 
 
 #if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title.include?("[WIP]") and (github.pr_json["requested_reviewers"] == nil)
+
 if dangerbot_assigned and not(dangerbot_already_posted)
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
+  client.update_issue(repo, number, {assignee: "j-wags"})
 end
 
 
