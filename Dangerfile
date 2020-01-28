@@ -32,10 +32,36 @@ MARKDOWN
 
 pp github
 
+pr = client.pull_request(github[":repo"][":full_name"], github[":number"])
+comments = client.issue_comments(github[":repo"][":full_name"], github["number"])
+
+
+dangerbot_assigned = false
+dangerbot_already_posted = false
+for comment in comments
+  if comment[":user"][":login"] == "openff-dangerbot"
+    dangerbot_already_posted = true
+  end
+end
+
+pp pr["assignees"]
+for assignee in pr["assignees"]
+  #puts "|"+assignee["login"]|
+  pp assignee[":login"]
+  if assignee[":login"] == "openff-dangerbot"
+    #if assignee[":login"].include?("off-dangerbot")
+    #puts "aaaa"
+    dangerbot_assigned = true
+  end
+end
+
+
+puts "dangerbot assigned?  " + dangerbot_assigned.to_s
+puts "dangerbot already posted? " + dangerbot_already_posted.to_s
 
 
 #if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title.include?("[WIP]") and (github.pr_json["requested_reviewers"] == nil)
-if dangerbot_review_requested and not(dangerbot_already_posted)
+if dangerbot_assigned and not(dangerbot_already_posted)
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
