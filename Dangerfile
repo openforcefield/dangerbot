@@ -190,8 +190,8 @@ if dangerbot_assigned
   markdown(PART_TWO)
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
   # client.update_issue(repo, number, :assignee => "j-wags") # {assignee: "j-wags"})
-  #client.add_assignees(repo, number, ["j-wags"])
-  client.add_assignees(repo, number, [reviewer])
+  client.add_assignees(repo, number, ["j-wags"])
+  #client.add_assignees(repo, number, [reviewer])
 end
 
 
