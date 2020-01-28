@@ -1,8 +1,11 @@
 name: off-dangerbot
 
+#on:
+#  pull_request:
+#    types: review_requested
 on:
   pull_request:
-    types: review_requested
+      types: assigned
 
 jobs:
   build:
