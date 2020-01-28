@@ -65,12 +65,13 @@ The newly-assigned reviewer should acknowledge that they recieved the request,
 and confirm that they can perform the review within 48 hours. Generally, a
 good review strategy is to:
 
-* Ensure that you understand the overall purpose of the codebase
-  (consider looking at the codebase's tests or examples to understand
+* Ensure that you understand the overall \
+  purpose of the codebase  \
+  (consider looking at the \
+  codebase's tests or examples \
+  to understand \
   how the functions are used)
-* Read through the body text of the PR (click through to any relevant
-  tagged issues to understand the discussion
-  around the changes)
+* Read through the body text of the PR (click through to any relevant tagged issues to understand the discussion around the changes)
 * Ensure that you understand the purpose of the changes in the PR
 * Read over the entire PR diff (minus data files) without commenting
 * Then, begin adding comments or thoughts, in the order of
