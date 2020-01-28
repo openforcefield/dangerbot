@@ -34,7 +34,7 @@ pp github
 
 client = github.api
 
-repo = github.full_name # [":repo"][":full_name"]
+repo = github.head.repo.full_name # [":repo"][":full_name"]
 number = github.number # [":number"]
 
 pr = client.pull_request(repo, number)
