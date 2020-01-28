@@ -6,7 +6,7 @@ Dangerbot is the host of Open Force Field Reviewer Roulette. This was inspired b
 ### Getting off-dangerbot to run in your repo 
 To add this Dangerbot to your repo, 
 
-1) Create the GitHub Action for Dangerbot by creating a file at `.github/workflows/ruby.yml` in your project repo. 
+1) Create the GitHub Action for Dangerbot by creating a file at `.github/workflows/dangerbot.yml` in your project repo. 
   It should contain 
 
 ```
