@@ -29,19 +29,56 @@ normally would! Danger does not (yet?) automatically notify them for you.
 |----------|
 MARKDOWN
 
-if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title.include?("[WIP]") and (github.pr_json["requested_reviewers"] == nil) 
+
+
+
+
+#if !(github.pr_title + github.pr_body).include?("#trivial") and !github.pr_title.include?("[WIP]") and (github.pr_json["requested_reviewers"] == nil)
+if dangerbot_review_requested and not(dangerbot_already_posted)
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   markdown(MESSAGE)
   markdown(CATEGORY_TABLE_HEADER + "| @j-wags |\n| " + reviewers.sample + " |")
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
 end
-message(github.pr_json["assignee"])
 
-require "pp"
-pp github.api.pull_requests.pull_request_comments("openforcefield/openforcefield", 490)
+pp github
+
+#client = github.api
+
+
+
+#comments = client.issue_comment("openforcefield/openforcefield", 490)
+
+#pp comments
+
+#dangerbot_review_requested = github.pr_json["reviewers"]
+#dangerbot_already_posted = false
+
+
+
+#for comment in comments
+#  if comment[":user"][":login"] == "openff-dangerbot"
+#    dangerbot_already_posted = true
+#  end
+#end
+
+
+
+#if comment[":body"].downcase.include?("@openff-dangerbot Ready for review")
+#if github.
+#roulette_spin_requested = true
+#end
+
+
+
+
+#message(github.pr_json["assignee"])
+
+#require "pp"
+#pp github.api.pull_requests.pull_request_comments("openforcefield/openforcefield", 490)
 #message(github.pr_json.to_json)
-puts "\n\n\n\n\n"
-pp github.pr_json
+#puts "\n\n\n\n\n"
+#pp github.pr_json
 
 #data = github.pr_json
 #data.sort{|a,b| a[1]<=>b[1]}.each { |elem|
