@@ -30,6 +30,7 @@ normally would! Danger does not (yet?) automatically notify them for you.
 MARKDOWN
 
 
+pp github
 
 
 
@@ -41,7 +42,6 @@ if dangerbot_review_requested and not(dangerbot_already_posted)
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
 end
 
-pp github
 
 #client = github.api
 
