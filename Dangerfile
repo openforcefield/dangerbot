@@ -34,7 +34,7 @@ _Some notes from @j-wags that we can refine as we do this more_
 
 The PR reviewer should perform a review within 48 hours of being assigned.
 
-The review may take up to three hours
+The review may take up to three hours.
 
 If few or insignificant changes are needed, the reviewer should accept the PR.
 
@@ -64,7 +64,7 @@ add as much value as possible if they are time-constrained.
 
 ### The PR assignee
 
-The newly-assigned reviewer should acknowledge that they recieved the request, \
+The newly-assigned reviewer should acknowledge that they received the request, \
 and confirm that they can perform the review within 48 hours. Generally, a \
 good review strategy is to:
 
@@ -82,7 +82,7 @@ good review strategy is to:
 
 ### Types of comments
 
-I've found that my comments fall into a few rough categories. This is a list of
+I've found that my comments fall into a few rough categories. This is a list of \
 them in descending order of value:
 
 [If any of these are present, you should request changes]
@@ -101,7 +101,7 @@ them in descending order of value:
   that are there"
 
 [Simple fixes that generally aren't blocking]
-* Grammar -- "It's "its", not "its'""
+* Grammar -- "It's _its_, not _its'_"
 * Readability -- This triple list comprehension is unnecessary and \
   would be really difficult to debug"
 
@@ -110,7 +110,7 @@ A few other tips for reviewers:
 * In larger-scale software development, the code review begins almost before \
   any code is written. These conversations cover architecture, API design \
   and specifications, \
-  and provide a blueprint for the work to be done. It's hard to recieve \
+  and provide a blueprint for the work to be done. It's hard to receive \
   code reviews _after you've written an entire new module_ saying "actually, \
   these two classes should be three classes", \
   because it's requesting a large-scale change that would add _days_ if not \
@@ -145,6 +145,15 @@ A few other tips for reviewers:
   more, consider reading \
   [Google's Code Review Guide](https://google.github.io/eng-practices/review/reviewer/) \
   and feel free to suggest changes to this message.
+* Keeping a checklist while you review might be useful!
+
+```
+Checklist example
+
+- [X] This task has been finished
+- [ ] This item is still pending
+
+```
 
 ### What am I?
 
@@ -171,6 +180,9 @@ dangerbot_assigned = false
 # So, if it's already run, skipping posting would simply delete the previous message.
 # Since dangerbot is now activated by requesting review, it's a one-time event, and
 # we don't need to worry about previous actions
+
+# The following lines are commented out and left here for future reference
+# as examples of Danger API usage
 
 #dangerbot_already_posted = false
 #for comment in comments
