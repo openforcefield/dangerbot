@@ -58,7 +58,7 @@ is clearly explained, by linking relevant GitHub Issues in the PR body \
 text (ex "Closes #12"), using clear variable names, commenting \
 non-obvious code, and identifying areas of the diff that are unusual \
 (ex. "the molecule_to_string function was cut and pasted to a different \
-file and didn't change, so don't review it"). If the PR diff is larger than 300 lines, they \ 
+file and didn't change, so don't review it"). If the PR diff is larger than 300 lines, they \
 should identify the area to prioritize for the review, to let the reviewer \
 add as much value as possible if they are time-constrained.
 
@@ -108,14 +108,14 @@ them in descending order of value:
 
 A few other tips for reviewers:
 * In larger-scale software development, the code review begins almost before \
-  any code is written. These conversations cover architecture, API design \ 
+  any code is written. These conversations cover architecture, API design \
   and specifications, \
   and provide a blueprint for the work to be done. It's hard to recieve \
   code reviews _after you've written an entire new module_ saying "actually, \
   these two classes should be three classes", \
   because it's requesting a large-scale change that would add _days_ if not \
   _weeks_ to the development time. We are here to experiment with cool \
-  science, so be sure to give the code author an "out" if you're asking for\
+  science, so be sure to give the code author an "out" if you're asking for \
   large, not-completely-essential changes, by recommending that the refactor become \
   an Issue that can be discussed over time and addressed as the code \
   becomes more mature.
@@ -133,7 +133,7 @@ A few other tips for reviewers:
   well-designed. As a dispersed team, we don't have the lab banter that \
   usually clears up interpersonal tension, so be positive whenever you \
   have the chance.
-* Every codebase has a different history and level of maturity, and \ 
+* Every codebase has a different history and level of maturity, and \
   each PR should ensure that the changes improve its overall quality a \
   little bit. So adjust the level of the review based on what stage \
   you see the software in. 
@@ -145,6 +145,11 @@ A few other tips for reviewers:
   more, consider reading \
   [Google's Code Review Guide](https://google.github.io/eng-practices/review/reviewer/) \
   and feel free to suggest changes to this message.
+
+### What am I?
+
+I am the Open Force Field Dangerbot. You can find my code and installation instructions
+at https://github.com/openforcefield/dangerbot.
 
 MARKDOWN
 
@@ -199,13 +204,13 @@ puts "dangerbot assigned?  " + dangerbot_assigned.to_s
 if dangerbot_assigned
   reviewers = YAML.load(open('https://raw.githubusercontent.com/openforcefield/dangerbot/master/reviewers.yml'))
   reviewer = reviewers.sample
-  reviewer = "j-wags"
-  markdown(PART_ONE + "| " + reviewer + " |")
+  #reviewer = "j-wags"
+  markdown(PART_ONE + "| @" + reviewer + " |")
   markdown(PART_TWO)
   markdown("This reviewer was selected out of a list of Open Force Field volunteers: "+ reviewers.inspect)
   # client.update_issue(repo, number, :assignee => "j-wags") # {assignee: "j-wags"})
-  client.add_assignees(repo, number, ["j-wags"])
-  #client.add_assignees(repo, number, [reviewer])
+  #client.add_assignees(repo, number, ["j-wags"])
+  client.add_assignees(repo, number, [reviewer])
 end
 
 
