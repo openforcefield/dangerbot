@@ -43,7 +43,7 @@ jobs:
 danger.import_dangerfile(github: "openforcefield/dangerbot") 
 ```
 
-3) Finally, you will need to add `openff-dangerbot`'s limited API token to your GitHub Secrets. Mine is at https://github.com/openforcefield/dangerbot/settings/secrets, and it must have the name `DANGER_GITHUB_API_TOKEN`. Contact Jeff once you get to this point and he will send you Dangerbot's API token.
+3) Add `openff-dangerbot`'s limited API token to your GitHub Secrets. Mine is at https://github.com/openforcefield/dangerbot/settings/secrets, and it must have the name `DANGER_GITHUB_API_TOKEN`. Contact Jeff once you get to this point and he will send you Dangerbot's API token.
 
 4) Give `openff-dangerbot` "Triage" access to your repo if you'd like it to automatically assign the reviewer when it runs (otherwise it will just tag them in a comment). The place where I do that is https://github.com/openforcefield/dangerbot/settings/access. If the repo you're setting up is inside the `openforcefield` org, you should be able to just give the "Bots" team "Triage" permissions.
 
