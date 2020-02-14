@@ -65,7 +65,7 @@ add as much value as possible if they are time-constrained.
 ### The PR assignee
 
 The newly-assigned reviewer should acknowledge that they received the request, \
-and confirm that they can perform the review within 48 hours. Generally, a \
+and confirm that they can perform the review within two working days. Generally, a \
 good review strategy is to:
 
 * Ensure that you understand the overall purpose of the codebase  \
